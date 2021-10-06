@@ -21,7 +21,11 @@ const compareDNA = (array = []) => {
     return result();
 
 }
-
+/***
+ *   El metodo cleanVar tiens la funcion de resetear las variable
+ *   cada vez que es llamada esta funcion las variables que tiene dentro
+ *   de restablecen.
+*/
 const cleanVar = (array) =>{
     isPositive = 1;
     maxConcidencias = 4;
@@ -29,7 +33,12 @@ const cleanVar = (array) =>{
     letter = '';
     next = '';
 }
-
+/***
+ *  sortArray recibe como parametro el array dado por el usuario
+ *  y lo guarda en matrix como un nuevo arreglo y asi poder hacer la busqueda
+ *  en el arreglo
+ * 
+ *   */
 const sortArray = (array) => {
     for (let i = 0; i < size; i++) {
         let row = array[i];
@@ -37,7 +46,12 @@ const sortArray = (array) => {
     }
 }
 
-// Buscar a la derecha
+/**
+ * Busqueda a la derecha hace la busqueda de izquierda a derecha
+ * para asi hacer la busqueda de las concidencias cada vez que encuentre
+ * una concidencia la variable isPositive aumenta hasta llegar a ser mayor
+ * a la variable maxConcidencias.
+ */
 const buscarDerecha = () => {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
@@ -60,7 +74,12 @@ const buscarDerecha = () => {
     }
 }
 
-// Buscar abajo
+/**
+ * Para la busqueda hacia abajo se uso un recorrido con dos for anidados
+ * pero en este caso se cambiaron los indices i,j a j,i para que realize
+ * la busqueda hacia abajo y de igual manera isPositive al llegar al umbral
+ * sale del codigo y muestra la informacion.
+ */
 const buscarAbajo = () => {
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
@@ -84,11 +103,9 @@ const buscarAbajo = () => {
 }
 
 
-// Buscar en diagonal
-// altura, anchura = size (mxn)
-// i diagonal
-// j vertical
-// z horizontal
+/**
+ * busqueda diagonal
+ */
 const buscarDiagonal = () => {
     let next = [];
 
@@ -111,7 +128,10 @@ const buscarDiagonal = () => {
         if (isPositive >= maxConcidencias) break;
     }
 }
-
+/**
+ * 
+ * @returns 
+ */
 const result = () => {
     console.clear();
     console.log(isPositive);
